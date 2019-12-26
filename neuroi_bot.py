@@ -34,7 +34,7 @@ async def member_role_update(before, after):
     fullList=[]
     text="Senshado School Member Count:```"
     for i in range(len(schoolList)):
-        role = get_role(int(schoolList[i]))
+        role = before.guild.get_role(int(schoolList[i]))
         icon = iconList[i]
         sum = 0
         for member in before.guild.members:
@@ -63,7 +63,7 @@ async def member_role_update(before, after):
     fullList=[]
     text="Strike Witches Squadron Member Count:```"
     for i in range(len(SWList)):
-        role = get_role(int(SWList[i]))
+        role = before.guild.get_role(int(SWList[i]))
         sum = 0
         for member in before.guild.members:
             if role in member.roles:
@@ -97,7 +97,7 @@ async def on_message(message):
             await message.channel.send("I'm working well here!")
         if message.content.startswith("-iconcheck"):
             for i in range(len(schoolList)):
-                role = get_role(int(schoolList[i]))
+                role = message.guild.get_role(int(schoolList[i]))
                 icon = iconList[i]
                 await message.channel.send(role.name + " " + icon)
         if message.content.startswith("-currenttime"):
@@ -106,7 +106,7 @@ async def on_message(message):
             fullList=[]
             text="Senshado School Member Count:```"
             for i in range(len(schoolList)):
-                role = get_role(int(schoolList[i]))
+                role = message.guild.get_role(int(schoolList[i]))
                 icon = iconList[i]
                 sum = 0
                 for member in message.guild.members:
@@ -136,7 +136,7 @@ async def on_message(message):
             fullList=[]
             text="Strike Witches Squadron Member Count:```"
             for i in range(len(SWList)):
-                role = get_role(int(SWList[i]))
+                role = message.guild.get_role(int(SWList[i]))
                 sum = 0
                 for member in message.guild.members:
                     if role in member.roles:
