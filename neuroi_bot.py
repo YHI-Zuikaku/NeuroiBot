@@ -56,8 +56,8 @@ async def on_member_update(before, after):
         #yield from client.send_message(message.channel,text)
         
         
-        msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
-        await fetch_message(id).edit(text)
+        #msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
+        #await fetch_message(id).edit(text)
             
         #########################################
 
@@ -84,8 +84,8 @@ async def on_member_update(before, after):
         #yield from client.send_message(message.channel,text)
         
         
-        msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
-        await fetch_message(id).edit(text)
+        #msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
+        #await fetch_message(id).edit(text)
 
 
 
