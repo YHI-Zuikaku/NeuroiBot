@@ -55,8 +55,8 @@ async def member_role_update(before, after):
     #yield from client.send_message(message.channel,text)
         
         
-    #await msg = fetch_message(id)
-    #await msg.edit(text)
+    msg = await client.get_channel(636669547667128337).fetch_message(659618792912977944)
+    await msg.edit(content=text)
             
     #########################################
 
@@ -83,8 +83,8 @@ async def member_role_update(before, after):
     #yield from client.send_message(message.channel,text)
         
         
-    #await msg = fetch_message(id)
-    #await msg.edit(text)
+    msg = await client.get_channel(636669547667128337).fetch_message(659623723921440779)
+    await msg.edit(content=text)
 
 
 
@@ -153,11 +153,11 @@ async def on_message(message):
             for i in fullList:
                 text += i + " is full\n"
             text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-            await client.get_channel(636669547667128337).send(text)
+            #await client.get_channel(636669547667128337).send(text)
             
             
-            #await msg = fetch_message(id)
-            #await msg.edit(text)
+            msg = await client.get_channel(636669547667128337).fetch_message(659623723921440779)
+            await msg.edit(content=text)
             await message.delete()
             
 
