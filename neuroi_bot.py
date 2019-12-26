@@ -30,7 +30,7 @@ async def on_ready():
     print("Hello World!")
     role = client.get_guild(636395705820250112).get_role(636613786039615508)
     for i in role.members:
-        print(i.nick)
+        print(i.display_name)
 
 @client.event
 async def on_member_update(before, after):
