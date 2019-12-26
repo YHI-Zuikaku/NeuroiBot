@@ -35,10 +35,10 @@ async def on_member_update(before, after):
         fullList=[]
         text="Senshado School Member Count:```"
         for i in range(len(schoolList)):
-            role = get(before.server.roles, id=schoolList[i])
+            role = get(before.guild.roles, id=schoolList[i])
             icon = iconList[i]
             sum = 0
-            for member in before.server.members:
+            for member in before.guild.members:
                 if role in member.roles:
                     sum += 1
             text += role.name
@@ -56,17 +56,17 @@ async def on_member_update(before, after):
         #yield from client.send_message(message.channel,text)
         
         
-        #msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
-        #await fetch_message(id).edit(text)
+        #await msg = fetch_message(id)
+        #await msg.edit(text)
             
         #########################################
 
         fullList=[]
         text="Strike Witches Squadron Member Count:```"
         for i in range(len(SWList)):
-            role = get(before.server.roles, id=SWList[i])
+            role = get(before.guild.roles, id=SWList[i])
             sum = 0
-            for member in before.server.members:
+            for member in before.guild.members:
                 if role in member.roles:
                     sum += 1
             text += role.name
@@ -84,8 +84,8 @@ async def on_member_update(before, after):
         #yield from client.send_message(message.channel,text)
         
         
-        #msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
-        #await fetch_message(id).edit(text)
+        #await msg = fetch_message(id)
+        #await msg.edit(text)
 
 
 
@@ -98,7 +98,7 @@ async def on_message(message):
             await message.channel.send("I'm working well here!")
         if message.content.startswith("-iconcheck"):
             for i in range(len(schoolList)):
-                role = get(message.server.roles, id=schoolList[i])
+                role = get(message.guild.roles, id=schoolList[i])
                 icon = iconList[i]
                 await message.channel.send(role.name + " " + icon)
         if message.content.startswith("-currenttime"):
@@ -107,10 +107,10 @@ async def on_message(message):
             fullList=[]
             text="Senshado School Member Count:```"
             for i in range(len(schoolList)):
-                role = get(message.server.roles, id=schoolList[i])
+                role = get(message.guild.roles, id=schoolList[i])
                 icon = iconList[i]
                 sum = 0
-                for member in message.server.members:
+                for member in message.guild.members:
                     if role in member.roles:
                         sum += 1
                 text += role.name
@@ -128,8 +128,8 @@ async def on_message(message):
             await get_channel(636669547667128337).send(text)
             
             
-            #msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
-            #await fetch_message(id).edit(text)
+            #await msg = fetch_message(id)
+            #await msg.edit(text)
             #yield from client.delete_message(message)
             
             ##################################################
@@ -137,9 +137,9 @@ async def on_message(message):
             fullList=[]
             text="Strike Witches Squadron Member Count:```"
             for i in range(len(SWList)):
-                role = get(message.server.roles, id=SWList[i])
+                role = get(message.guild.roles, id=SWList[i])
                 sum = 0
-                for member in message.server.members:
+                for member in message.guild.members:
                     if role in member.roles:
                         sum += 1
                 text += role.name
@@ -157,8 +157,8 @@ async def on_message(message):
             await get_channel(636669547667128337).send(text)
             
             
-            #msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
-            #await fetch_message(id).edit(text)
+            #await msg = fetch_message(id)
+            #await msg.edit(text)
             await message.delete()
             
 
