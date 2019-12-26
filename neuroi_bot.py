@@ -37,17 +37,14 @@ async def on_member_update(before, after):
         for i in range(len(schoolList)):
             role = before.guild.get_role(int(schoolList[i]))
             icon = iconList[i]
-            sum = 0
-            for member in before.guild.members:
-                if role in member.roles:
-                    sum += 1
+            sum = length(role.members)
             text += role.name
             for j in range(len(role.name),34):
                 text += " "
             if sum < 10:
                 text += " "
             text += str(sum) + " members\n\n"
-            if sum >= 35:
+            if sum >= 30:
                 fullList.append([role.name,icon])
         text += "```\n"
         for i in fullList:
@@ -65,17 +62,14 @@ async def on_member_update(before, after):
         text="Strike Witches Squadron Member Count:```"
         for i in range(len(SWList)):
             role = before.guild.get_role(int(SWList[i]))
-            sum = 0
-            for member in before.guild.members:
-                if role in member.roles:
-                    sum += 1
+            sum = length(role.members)
             text += role.name
             for j in range(len(role.name),34):
                 text += " "
             if sum < 10:
                 text += " "
             text += str(sum) + " members\n\n"
-            if sum >= 35:
+            if sum >= 30:
                 fullList.append(role.name)
         text += "```\n"
         for i in fullList:
@@ -109,17 +103,14 @@ async def on_message(message):
             for i in range(len(schoolList)):
                 role = message.guild.get_role(int(schoolList[i]))
                 icon = iconList[i]
-                sum = 0
-                for member in message.guild.members:
-                    if role in member.roles:
-                        sum += 1
+                sum = length(role.members)
                 text += role.name
                 for j in range(len(role.name),34):
                     text += " "
                 if sum < 10:
                     text += " "
                 text += str(sum) + " members\n\n"
-                if sum >= 35:
+                if sum >= 30:
                     fullList.append([role.name,icon])
             text += "```\n"
             for i in fullList:
@@ -138,17 +129,14 @@ async def on_message(message):
             text="Strike Witches Squadron Member Count:```"
             for i in range(len(SWList)):
                 role = message.guild.get_role(int(SWList[i]))
-                sum = 0
-                for member in message.guild.members:
-                    if role in member.roles:
-                        sum += 1
+                sum = length(role.members)
                 text += role.name
                 for j in range(len(role.name),34):
                     text += " "
                 if sum < 10:
                     text += " "
                 text += str(sum) + " members\n\n"
-                if sum >= 35:
+                if sum >= 30:
                     fullList.append(role.name)
             text += "```\n"
             for i in fullList:
