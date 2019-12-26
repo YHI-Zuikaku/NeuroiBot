@@ -37,7 +37,7 @@ async def on_member_update(before, after):
         for i in range(len(schoolList)):
             role = before.guild.get_role(int(schoolList[i]))
             icon = iconList[i]
-            sum = length(role.members)
+            sum = len(role.members)
             text += role.name
             for j in range(len(role.name),34):
                 text += " "
@@ -62,7 +62,7 @@ async def on_member_update(before, after):
         text="Strike Witches Squadron Member Count:```"
         for i in range(len(SWList)):
             role = before.guild.get_role(int(SWList[i]))
-            sum = length(role.members)
+            sum = len(role.members)
             text += role.name
             for j in range(len(role.name),34):
                 text += " "
@@ -103,7 +103,7 @@ async def on_message(message):
             for i in range(len(schoolList)):
                 role = message.guild.get_role(int(schoolList[i]))
                 icon = iconList[i]
-                sum = length(role.members)
+                sum = len(role.members)
                 text += role.name
                 for j in range(len(role.name),34):
                     text += " "
@@ -129,7 +129,7 @@ async def on_message(message):
             text="Strike Witches Squadron Member Count:```"
             for i in range(len(SWList)):
                 role = message.guild.get_role(int(SWList[i]))
-                sum = length(role.members)
+                sum = len(role.members)
                 text += role.name
                 for j in range(len(role.name),34):
                     text += " "
