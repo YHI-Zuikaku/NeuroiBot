@@ -30,62 +30,61 @@ async def on_ready():
     print("Hello World!")
 
 @client.event
-async def on_member_update(before, after):
-    if before.roles!=after.roles:
-        fullList=[]
-        text="Senshado School Member Count:```"
-        for i in range(len(schoolList)):
-            role = get(before.guild.roles, id=schoolList[i])
-            icon = iconList[i]
-            sum = 0
-            for member in before.guild.members:
-                if role in member.roles:
-                    sum += 1
-            text += role.name
-            for j in range(len(role.name),34):
-                text += " "
-            if sum < 10:
-                text += " "
-            text += str(sum) + " members\n\n"
-            if sum >= 35:
-                fullList.append([role.name,icon])
-        text += "```\n"
-        for i in fullList:
-            text += i[0] + " is full " + i[1] + "\n"
-        #text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-        #yield from client.send_message(message.channel,text)
+async def member_role_update(before, after):
+    fullList=[]
+    text="Senshado School Member Count:```"
+    for i in range(len(schoolList)):
+        role = get_role(int(schoolList[i]))
+        icon = iconList[i]
+        sum = 0
+        for member in before.guild.members:
+            if role in member.roles:
+                sum += 1
+        text += role.name
+        for j in range(len(role.name),34):
+            text += " "
+        if sum < 10:
+            text += " "
+        text += str(sum) + " members\n\n"
+        if sum >= 35:
+            fullList.append([role.name,icon])
+    text += "```\n"
+    for i in fullList:
+        text += i[0] + " is full " + i[1] + "\n"
+    #text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
+    #yield from client.send_message(message.channel,text)
         
         
-        #await msg = fetch_message(id)
-        #await msg.edit(text)
+    #await msg = fetch_message(id)
+    #await msg.edit(text)
             
-        #########################################
+    #########################################
 
-        fullList=[]
-        text="Strike Witches Squadron Member Count:```"
-        for i in range(len(SWList)):
-            role = get(before.guild.roles, id=SWList[i])
-            sum = 0
-            for member in before.guild.members:
-                if role in member.roles:
-                    sum += 1
-            text += role.name
-            for j in range(len(role.name),34):
-                text += " "
-            if sum < 10:
-                text += " "
-            text += str(sum) + " members\n\n"
-            if sum >= 35:
-                fullList.append(role.name)
-        text += "```\n"
-        for i in fullList:
-            text += i + " is full\n"
-        text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-        #yield from client.send_message(message.channel,text)
+    fullList=[]
+    text="Strike Witches Squadron Member Count:```"
+    for i in range(len(SWList)):
+        role = get_role(int(SWList[i]))
+        sum = 0
+        for member in before.guild.members:
+            if role in member.roles:
+                sum += 1
+        text += role.name
+        for j in range(len(role.name),34):
+            text += " "
+        if sum < 10:
+            text += " "
+        text += str(sum) + " members\n\n"
+        if sum >= 35:
+            fullList.append(role.name)
+    text += "```\n"
+    for i in fullList:
+        text += i + " is full\n"
+    text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
+    #yield from client.send_message(message.channel,text)
         
         
-        #await msg = fetch_message(id)
-        #await msg.edit(text)
+    #await msg = fetch_message(id)
+    #await msg.edit(text)
 
 
 
@@ -98,7 +97,7 @@ async def on_message(message):
             await message.channel.send("I'm working well here!")
         if message.content.startswith("-iconcheck"):
             for i in range(len(schoolList)):
-                role = get(message.guild.roles, id=schoolList[i])
+                role = get_role(int(schoolList[i]))
                 icon = iconList[i]
                 await message.channel.send(role.name + " " + icon)
         if message.content.startswith("-currenttime"):
@@ -107,7 +106,7 @@ async def on_message(message):
             fullList=[]
             text="Senshado School Member Count:```"
             for i in range(len(schoolList)):
-                role = get(message.guild.roles, id=schoolList[i])
+                role = get_role(int(schoolList[i]))
                 icon = iconList[i]
                 sum = 0
                 for member in message.guild.members:
@@ -137,7 +136,7 @@ async def on_message(message):
             fullList=[]
             text="Strike Witches Squadron Member Count:```"
             for i in range(len(SWList)):
-                role = get(message.guild.roles, id=SWList[i])
+                role = get_role(int(SWList[i]))
                 sum = 0
                 for member in message.guild.members:
                     if role in member.roles:
