@@ -90,7 +90,7 @@ async def on_member_update(before, after):
 
 
 @client.event
-aysnc def on_message(message):
+async def on_message(message):
                     
     if message.channel.id=="636653692841623612":
         if message.content.startswith("-botstatus"):
