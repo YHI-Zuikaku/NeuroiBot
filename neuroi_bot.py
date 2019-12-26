@@ -92,7 +92,7 @@ async def on_member_update(before, after):
 @client.event
 async def on_message(message):
                     
-    if message.channel.id=="636653692841623612":
+    if message.channel.id==636653692841623612:
         if message.content.startswith("-botstatus"):
             print("yes")
             await message.channel.send("I'm working well here!")
@@ -125,7 +125,7 @@ async def on_message(message):
             for i in fullList:
                 text += i[0] + " is full " + i[1] + "\n"
             #text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-            await get_channel("636669547667128337").send(text)
+            await get_channel(636669547667128337).send(text)
             
             
             #msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
@@ -154,7 +154,7 @@ async def on_message(message):
             for i in fullList:
                 text += i + " is full\n"
             text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-            await get_channel("636669547667128337").send(text)
+            await get_channel(636669547667128337).send(text)
             
             
             #msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
