@@ -28,9 +28,6 @@ SWList=['653167395833249792', '653167938655748106', '653168305011425280', '65316
 @client.event
 async def on_ready():
     print("Hello World!")
-    role = client.get_guild(636395705820250112).get_role(636613786039615508)
-    for i in role.members:
-        print(i.display_name)
 
 @client.event
 async def on_member_update(before, after):
@@ -84,6 +81,56 @@ async def on_member_update(before, after):
         msg = await client.get_channel(636669547667128337).fetch_message(659623723921440779)
         await msg.edit(content=text)
 
+@client.event
+async def on_member_remove(member):
+    fullList=[]
+    text="Senshado School Member Count:```"
+    for i in range(len(schoolList)):
+        role = before.guild.get_role(int(schoolList[i]))
+        icon = iconList[i]
+        sum = len(role.members)
+        text += role.name
+        for j in range(len(role.name),34):
+            text += " "
+        if sum < 10:
+            text += " "
+        text += str(sum) + " members\n\n"
+        if sum >= 30:
+            fullList.append([role.name,icon])
+    text += "```\n"
+    for i in fullList:
+        text += i[0] + " is full " + i[1] + "\n"
+    #text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
+    #yield from client.send_message(message.channel,text)
+        
+        
+    msg = await client.get_channel(636669547667128337).fetch_message(659618792912977944)
+    await msg.edit(content=text)
+            
+    #########################################
+
+    fullList=[]
+    text="Strike Witches Squadron Member Count:```"
+    for i in range(len(SWList)):
+        role = before.guild.get_role(int(SWList[i]))
+        sum = len(role.members)
+        text += role.name
+        for j in range(len(role.name),34):
+            text += " "
+        if sum < 10:
+            text += " "
+        text += str(sum) + " members\n\n"
+        if sum >= 30:
+            fullList.append(role.name)
+    text += "```\n"
+    for i in fullList:
+        text += i + " is full\n"
+    text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
+    #yield from client.send_message(message.channel,text)
+        
+        
+    msg = await client.get_channel(636669547667128337).fetch_message(659623723921440779)
+    await msg.edit(content=text)
 
 
 @client.event
