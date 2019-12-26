@@ -128,7 +128,7 @@ async def on_message(message):
             
             
             msg = await client.get_channel(636669547667128337).fetch_message(659618792912977944)
-            await msg.edit(text)
+            await msg.edit(content=text)
             #yield from client.delete_message(message)
             
             ##################################################
