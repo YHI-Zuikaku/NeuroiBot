@@ -96,7 +96,7 @@ def on_message(message):
     if message.channel.id=="636653692841623612":
         if message.content.startswith("-botstatus"):
             print("yes")
-            await client.send_message(message.channel,"I'm working well here!")
+            await send_message(message.channel,"I'm working well here!")
         if message.content.startswith("-iconcheck"):
             for i in range(len(schoolList)):
                 role = get(message.server.roles, id=schoolList[i])
