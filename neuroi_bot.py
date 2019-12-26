@@ -57,7 +57,7 @@ async def on_member_update(before, after):
         
         
         msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
-        await client.edit_message(msg, text)
+        await fetch_message(id).edit(text)
             
         #########################################
 
@@ -85,7 +85,7 @@ async def on_member_update(before, after):
         
         
         msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
-        await client.edit_message(msg, text)
+        await fetch_message(id).edit(text)
 
 
 
@@ -96,14 +96,14 @@ def on_message(message):
     if message.channel.id=="636653692841623612":
         if message.content.startswith("-botstatus"):
             print("yes")
-            await send_message(message.channel,"I'm working well here!")
+            await message.channel.send("I'm working well here!")
         if message.content.startswith("-iconcheck"):
             for i in range(len(schoolList)):
                 role = get(message.server.roles, id=schoolList[i])
                 icon = iconList[i]
-                await client.send_message(message.channel, role.name + " " + icon)
+                await message.channel.send(role.name + " " + icon)
         if message.content.startswith("-currenttime"):
-            await client.send_message(message.channel,UTC_Clock.asctime(UTC_Clock.gmtime()))
+            await message.channel.send(UTC_Clock.asctime(UTC_Clock.gmtime()))
         if message.content.startswith("thisIsAnUpdate"):
             fullList=[]
             text="Senshado School Member Count:```"
@@ -126,11 +126,11 @@ def on_message(message):
             for i in fullList:
                 text += i[0] + " is full " + i[1] + "\n"
             #text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-            await client.send_message(client.get_channel("636669547667128337"),text)
+            await get_channel("636669547667128337").send(text)
             
             
             #msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
-            #await client.edit_message(msg, text)
+            #await fetch_message(id).edit(text)
             #yield from client.delete_message(message)
             
             ##################################################
@@ -155,12 +155,12 @@ def on_message(message):
             for i in fullList:
                 text += i + " is full\n"
             text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-            await client.send_message(client.get_channel("636669547667128337"),text)
+            await get_channel("636669547667128337").send(text)
             
             
             #msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
-            #await client.edit_message(msg, text)
-            await client.delete_message(message)
+            #await fetch_message(id).edit(text)
+            await message.delete()
             
 
 access_token= os.environ["ACCESS_TOKEN"]
