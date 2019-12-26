@@ -1,1 +1,1 @@
-worker: python senshado_bot.py
+worker: python neuroi_bot.py
