@@ -58,7 +58,7 @@ def on_member_update(before, after):
         #yield from client.send_message(message.channel,text)
         
         
-        msg = yield from client.get_message(client.get_channel("535235959948574740"), "594793351329349643")
+        msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
         yield from client.edit_message(msg, text)
             
         #########################################
@@ -86,7 +86,7 @@ def on_member_update(before, after):
         #yield from client.send_message(message.channel,text)
         
         
-        msg = yield from client.get_message(client.get_channel("535235959948574740"), "604856268406128640")
+        msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
         yield from client.edit_message(msg, text)
 
 
@@ -95,7 +95,7 @@ def on_member_update(before, after):
 @asyncio.coroutine
 def on_message(message):
                     
-    if message.channel.id=="496541228771573770":
+    if message.channel.id=="636653692841623612":
         if message.content.startswith("-botstatus"):
             yield from client.send_message(message.channel,"I'm working well here!")
         if message.content.startswith("-iconcheck"):
@@ -132,11 +132,11 @@ def on_message(message):
             for i in fullList:
                 text += i[0] + " is full " + i[1] + "\n"
             #text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-            #yield from client.send_message(message.channel,text)
+            yield from client.send_message(client.get_channel("636669547667128337"),text)
             
             
-            msg = yield from client.get_message(message.channel, "594793351329349643")
-            yield from client.edit_message(msg, text)
+            #msg = yield from client.get_message(client.get_channel("636669547667128337"), "594793351329349643")
+            #yield from client.edit_message(msg, text)
             #yield from client.delete_message(message)
             
             ##################################################
@@ -161,11 +161,11 @@ def on_message(message):
             for i in fullList:
                 text += i + " is full\n"
             text += "\nThe member count is updated automatically.\nLast update was at " + UTC_Clock.asctime(UTC_Clock.gmtime()) + " (UTC timezone)"
-            #yield from client.send_message(message.channel,text)
+            yield from client.send_message(client.get_channel("636669547667128337"),text)
             
             
-            msg = yield from client.get_message(message.channel, "604856268406128640")
-            yield from client.edit_message(msg, text)
+            #msg = yield from client.get_message(client.get_channel("636669547667128337"), "604856268406128640")
+            #yield from client.edit_message(msg, text)
             yield from client.delete_message(message)
             
 
