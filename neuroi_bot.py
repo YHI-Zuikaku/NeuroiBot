@@ -30,7 +30,7 @@ async def on_ready():
     print("Hello World!")
 
 @client.event
-async def member_role_update(before, after):
+async def on_member_role_update(before, after):
     fullList=[]
     text="Senshado School Member Count:```"
     for i in range(len(schoolList)):
